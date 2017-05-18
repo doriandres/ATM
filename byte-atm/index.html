@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>BYTE | ATM</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>    
+</head>
+<body class="grey lighten-3">
+<header>
+    <div class="navbar-fixed">
+      <nav class="grey darken-4" role="navigation">
+        <div class="nav-wrapper container">
+             <a href="#" class="brand-logo"><i class="material-icons">ic_style</i><span class="thin">BYTE</span> <b>ATM</b></a>
+        </div>
+      </nav>
+    </div>    
+</header>
+<main>
+    <div class="container">
+        <div class="row">
+            <br><br>
+            <div class="col s12 card">
+                
+                <!-- Inicio -->
+                <div class="section no-pad-bot" id="start_container">
+                    <div class="container">
+                      <br><br>
+                      <h3 class="header center grey-text text-darken-4"><span><i class="small material-icons">style</i> <span class="thin">BYTE</span> <b>ATM</b></span></h3>
+                      <div class="row center">
+                        <h5 class="header col s12 light">Bienvenido, presione iniciar para comenzar.</h5>
+                      </div>
+                      <div class="row center">
+                        <a href="#" onclick='tocar(this)' id="main_btn_start" class="btn waves-effect waves-light deep-orange darken-1">Iniciar</a>
+                      </div>
+                      <br><br>
+                    </div>
+                </div>
+                
+                <div class="section no-pad-bot" style="display:none;" id="main_container">
+                    <div class="row">
+                      <div class="col s4">
+                          <!-- Menu Principal-->
+                          <div id="menu_container">
+                              <ul class="collection">
+                                <a id="modulo_btn_menu" href="#" onclick="tocar(this)" class="collection-item avatar grey-text text-darken-4">
+                                  <i class="material-icons circle deep-orange darken-1">local_atm</i>
+                                  <span class="title">Modulo de carga</span>
+                                </a>
+                                <a id="transacciones_btn_menu" onclick="tocar(this)" href="#" class="collection-item avatar grey-text text-darken-4">
+                                  <i class="material-icons circle deep-orange darken-1">attach_money</i>
+                                  <span class="title">Transacciones</span>
+                                </a>
+                                <a id="consultas_btn_menu" onclick="tocar(this)" href="#" class="collection-item avatar grey-text text-darken-4">
+                                  <i class="material-icons circle deep-orange darken-1">question_answer</i>
+                                  <span class="title">Consultas</span>
+                                </a>
+                                <a id="start_btn_main" href="#" onclick="tocar(this); reset_contain()" class="collection-item avatar grey-text text-darken-4">
+                                  <i class="material-icons circle deep-orange darken-1">exit_to_app</i>
+                                  <span class="title">Salir</span>
+                                </a>
+                              </ul>
+                          </div> 
+                          <!-- Menu Modulo de Carga-->
+                          <div id="modulo_container" style="display:none;">
+                              <ul class="collection">
+                                <a href="#" id="fill-atm_button" onclick="show_contain(this)" class="collection-item avatar grey-text text-darken-4">
+                                  <i class="material-icons circle deep-orange darken-1">assessment</i>
+                                  <span class="title">Llenar cajero</span>
+                                </a>
+                                <a href="#" id="add-user_button" onclick="show_contain(this)" class="collection-item avatar grey-text text-darken-4">
+                                  <i class="material-icons circle deep-orange darken-1">person_add</i>
+                                  <span class="title">Agregar usuario</span>
+                                </a>
+                                <a id="menu_btn_modulo" onclick="tocar(this); reset_contain()" href="#" class="collection-item avatar grey-text text-darken-4">
+                                  <i class="material-icons circle deep-orange darken-1">arrow_back</i>
+                                  <span class="title">Volver</span>
+                                </a>
+                              </ul>
+                          </div>
+                          <!-- Menu Transacciones-->
+                          <div id="transacciones_container" style="display:none;">
+                              <ul class="collection">
+                                <a href="#" id="withdraw_button" onclick="show_contain(this)" class="collection-item avatar grey-text text-darken-4">
+                                  <i class="material-icons circle deep-orange darken-1">archive</i>
+                                  <span class="title">Retiros</span>
+                                </a>
+                                <a href="#" id="deposit_button" onclick="show_contain(this)" class="collection-item avatar grey-text text-darken-4">
+                                  <i class="material-icons circle deep-orange darken-1">send</i>
+                                  <span class="title">Depositos</span>
+                                </a>
+                                <a id="menu_btn_transacciones" onclick="tocar(this); reset_contain()" href="#" class="collection-item avatar grey-text text-darken-4">
+                                  <i class="material-icons circle deep-orange darken-1">arrow_back</i>
+                                  <span class="title">Volver</span>
+                                </a>
+                              </ul>
+                          </div>
+                          <!-- Menu Consultas-->
+                          <div id="consultas_container" style="display:none;">
+                              <ul class="collection">
+                                <a href="#" id="atm-query_button" onclick="show_contain(this)" class="collection-item avatar grey-text text-darken-4">
+                                  <i class="material-icons circle deep-orange darken-1">dns</i>
+                                  <span class="title">Cajero</span>
+                                </a>
+                                <a href="#" id="users-query_button" onclick="show_contain(this)" class="collection-item avatar grey-text text-darken-4">
+                                  <i class="material-icons circle deep-orange darken-1">supervisor_account</i>
+                                  <span class="title">Usuarios</span>
+                                </a>
+                                <a id="menu_btn_consultas" onclick="tocar(this); reset_contain()" href="#" class="collection-item avatar grey-text text-darken-4">
+                                  <i class="material-icons circle deep-orange darken-1">arrow_back</i>
+                                  <span class="title">Volver</span>
+                                </a>
+                              </ul>
+                          </div>
+                      </div>
+                      <div class="col s8">
+                          <div id="container">
+                              <br>
+                              <div id="empty_container" class="contenido" style="display:block;">
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <center>
+                                  <div class="centered-message">
+                                    <h5>Elige una opción </h5> 
+                                  </div>
+                                </center>
+                              </div>
+                              
+                              <div id="fill-atm_container" class="contenido" style="display:none;">
+                                <h5>-Llenar Cajero</h5>
+                                <p>Inserte la cantidad de billetes correspondiente para cada denominación monetaria.</p>
+                                <br>  
+                                  <div class="container">
+                                    <div class="row">
+                                      <div class="input-field col s4">
+                                        <input class="validate" id="k_fill" type="number" placeholder="0">          <label for="k_fill">¢1000</label>  
+                                      </div>
+                                      <div class="input-field col s4">
+                                        <input class="validate" id="dk_fill" type="number" placeholder="0">                            <label for="dk_fill">¢2000</label>                               
+                                      </div>
+                                      <div class="input-field col s4">
+                                        <input class="validate" id="ck_fill" type="number" placeholder="0">                            <label for="ck_fill">¢5000</label>                           
+                                      </div>
+                                        
+                                      <div class="input-field col s4">
+                                        <input class="validate" id="xk_fill" type="number" placeholder="0">                            <label for="xk_fill">¢10 000</label>                                         
+                                      </div>
+                                      <div class="input-field col s4">
+                                        <input class="validate" id="vk_fill" type="number" placeholder="0">                            <label for="vk_fill">¢20 000</label>                                     
+                                      </div>
+                                      <div class="input-field col s4">
+                                        <input class="validate" id="lk_fill" type="number" placeholder="0">                            <label for="lk_fill">¢50 000</label>  
+                                      </div>
+                                      <div class="input-field col s4 offset-s8">
+                                        <a href="#" onclick="fill_atm()" class="btn deep-orange darken-1">Listo</a>
+                                      </div>
+                                    </div>
+                                    
+                                  </div>
+                              </div>
+                              
+                              
+                              
+                              <div id="add-user_container"  class="contenido" style="display:none;">
+                                <h5>-Agregar Usuario</h5>
+                                <p>Inserte los datos que se le solicitan para crear un nuevo usuario</p>
+                                <br>
+                                  <div class="container">
+                                    <div class="row">
+                                      <div class="input-field">
+                                        <input class="validate" id="name_input" type="text" placeholder="Nombre completo">
+                                          <label for="name_input">Nombre completo</label>  
+                                      </div>
+                                      <div class="input-field">
+                                        <input class="validate" id="id_input" type="text" placeholder="ID">
+                                          <label for="id_input">ID</label>  
+                                      </div>
+                                      <div class="input-field">
+                                        <input class="validate" id="pass_input" type="password" placeholder="Contraseña">
+                                          <label for="pass_input">Contraseña</label>  
+                                      </div>
+                                      <div class="input-field">
+                                        <input class="validate" id="amount_input" type="number" placeholder="Monto">
+                                          <label for="amount_input">Monto</label>  
+                                      </div>
+                                      <div class="input-field col s4 offset-s8">
+                                        <a href="#" onclick="insert_user()" class="btn deep-orange darken-1">Agregar</a>
+                                      </div>
+                                    </div>
+                                    
+                                  </div>
+                              </div>
+                              <div id="withdraw_container"  class="contenido" style="display:none;">
+                                <h5>-Retiros</h5>
+                                <p>Inserte la cantidad de dinero que desea retirar</p>
+                                <br>
+                                  <div class="container">
+                                    <div class="row">
+                                      <div class="input-field">
+                                        <input id="withdraw_input" class="validate" type="number" placeholder="Monto">
+                                        <label for="withdraw_input">Monto</label>  
+                                      </div>
+                                      <div class="input-field col s4 offset-s8">
+                                        <a href="#" id="withdraw" onclick="check_num(this)" class="btn deep-orange darken-1">Retirar</a>
+                                      </div>
+                                    </div>    
+                                  </div>      
+                              </div>
+                              <div id="deposit_container"  class="contenido" style="display:none;">
+                                <h5>-Depositos</h5>
+                                <p>Inserte la cantidad de dinero que desea depositar</p>
+                                <br>
+                                  <div class="container">
+                                    <div class="row">
+                                      <div class="input-field">
+                                        <input id="deposit_input" class="validate" type="number" placeholder="Monto">
+                                        <label for="deposit_input">Monto</label>  
+                                      </div>
+                                      <div class="input-field col s4 offset-s8">
+                                        <a href="#" id="deposit" onclick="check_num(this)" class="btn deep-orange darken-1">Depositar</a>
+                                      </div>
+                                    </div>    
+                                  </div>    
+                              </div>
+                              <div id="atm-query_container"  class="contenido" style="display:none;">
+                                <h5>-Consultar Cajero</h5>
+                                <table class="striped centered bordered responsive-table">
+                                    <thead>
+                                      <tr>
+                                          <th>Billetes</th>
+                                          <th>Cantidad</th>
+                                          <th>Total</th>
+                                      </tr>
+                                    </thead>
+
+                                    <tbody id="atm-query_table">
+                                      <tr>
+                                        <td>¢1000</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                      </tr>
+                                      <tr>
+                                        <td>¢2000</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                      </tr>
+                                      <tr>
+                                        <td>¢5000</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                      </tr>
+                                      <tr>
+                                        <td>¢10 000</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                      </tr>
+                                      <tr>
+                                        <td>¢20 000</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                      </tr>
+                                      <tr>
+                                        <td>¢50 000</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                      </tr>    
+                                    </tbody>
+                                </table>
+                              </div>
+                              <div id="users-query_container"  class="contenido" style="display:none;">
+                                <h5>-Consultar Usuarios</h5>
+                                <table class="striped centered bordered responsive-table">
+                                    <thead>
+                                      <tr>
+                                          <th>Nombre</th>
+                                          <th>ID</th>
+                                          <th>Monto</th>
+                                      </tr>
+                                    </thead>
+
+                                    <tbody id="users-query_table">
+                                      <tr>
+                                        <td>Dorian Andrés</td>
+                                        <td>1234</td>
+                                        <td>¢25 000</td>
+                                      </tr>
+                                      <tr>
+                                        <td>Guillermo Jimenez</td>
+                                        <td>2345</td>
+                                        <td>¢62 000</td>
+                                      </tr>
+                                      <tr>
+                                        <td>Fabian Cordero</td>
+                                        <td>3456</td>
+                                        <td>¢97 000</td>
+                                      </tr>
+                                    </tbody>
+                                </table>  
+                              </div>
+                          </div>
+                      </div>   
+                </div>
+            </div>
+        </div>
+    </div>
+       <!-- Modal Trigger -->
+
+  <!-- Modal Structure -->
+  <div id="withdraw_modal" class="modal">
+    <div class="modal-content">
+      <h4>Retiro | Credenciales</h4>
+      <p>Inserte sus credenciales</p>
+      <br>
+      <div class="container">
+          <div class="input-field">
+            <input id="withdraw_credencials_id" type="text" placeholder="ID">
+            <label for="withdraw_credencials_id">ID</label>  
+          </div>
+          <div class="input-field">
+            <input id="withdraw_credencials_pass" type="password" placeholder="Contraseña">
+            <label for="withdraw_credencials_pass">Contraseña</label>  
+          </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" onclick="withdraw()" class="modal-action modal-close  btn-flat deep-orange darken-1 white-text">Listo</a>
+    </div>
+  </div>
+        
+ <div id="deposit_modal" class="modal">
+    <div class="modal-content">
+      <h4>Deposito | Credenciales</h4>
+      <p>Inserte sus credenciales</p>
+      <br>
+      <div class="container">
+          <div class="input-field">
+            <input id="deposit_credencials_id" type="text" placeholder="ID">
+            <label for="deposit_credencials_id">ID</label>  
+          </div>
+          <div class="input-field">
+            <input id="deposit_credencials_pass" type="password" placeholder="Contraseña">
+            <label for="deposit_credencials_pass">Contraseña</label>  
+          </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" onclick="deposit()" class="modal-action modal-close btn-flat deep-orange darken-1 white-text">Listo</a>
+    </div>
+  </div>
+       
+</main>
+    
+<footer class="page-footer grey darken-4">
+    <div class="footer-copyright">
+      <div class="container">
+      Hecho por <a class="orange-text text-lighten-3" href="https://github.com/doriandres">doriandres</a>
+      </div>
+    </div>
+</footer>
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/functions.js"></script>    
+  <script>
+    $(document).ready(function(){
+        // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+      $('.modal').modal();
+    });   
+  </script>     
+  </body>
+</html>
